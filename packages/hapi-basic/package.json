@@ -1,0 +1,48 @@
+{
+  "name": "hapi-basic",
+  "version": "1.0.0",
+  "author": "Yohannes",  
+  "license": "ISC",  
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --inspect --debug --transpileOnly -r esm ./server.ts",
+    "seed": "ts-node-dev ./scripts/seed.ts",
+    "start": "build && node ./build/server.js",
+    "built": "node -r esm main.js",
+    "build": "tsc .",
+    "tsc": "tsc",
+    "eslint": "eslint",
+    "lint": "eslint api app -c .eslintrc.json --ext js,ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@hapi/boom": "^7.4.2",
+    "@hapi/cookie": "^10.1.0",
+    "@hapi/hapi": "^18.3.1",
+    "@hapi/inert": "^5.2.1",
+    "@hapi/vision": "^5.5.2",
+    "bcrypt": "^3.0.6",
+    "hapi": "^18.1.0",
+    "hapi-swagger": "^10.0.2",
+    "typescript": "^3.5.2"
+  },
+  "devDependencies": {
+    "@types/hapi": "^18.0.2",
+    "@types/node": "^12.0.12",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "esm": "^3.2.25",
+    "jest": "^24.8.0",
+    "prettier": "^1.18.2",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "webpack": "^4.35.2"
+  }
+}
