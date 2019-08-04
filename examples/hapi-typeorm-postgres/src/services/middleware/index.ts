@@ -1,8 +1,8 @@
 import setupApiResponseMiddleware from './apiResponse';
-import setupNotFoundMiddleware from './notFound';
+import setupErrorResponseMiddleware from './errorResponse';
 import { Server } from 'hapi';
 
 export default function setupMiddleware(server: Server) {
-  setupNotFoundMiddleware(server);
+  setupErrorResponseMiddleware(server);
   setupApiResponseMiddleware(server);
 }
