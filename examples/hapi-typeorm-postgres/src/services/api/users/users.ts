@@ -31,7 +31,7 @@ export const getUser: ServerRouteConfig = {
     },
     async handler(request, h) {
       return h.response({
-        data: await h.context.clientRepository.findOne(request.params.clientId)
+        data: await h.context.clientRepository.findOne(request.params.userId)
       });
     }
   }
@@ -68,7 +68,7 @@ export const updateUser: ServerRouteConfig = {
   },
   async handler(request, h) {
     const { clientRepository } = h.context;
-    const client = await clientRepository.findOne(request.params.clientId);
+    const client = await clientRepository.findOne(request.params.userId);
     await clientRepository.merge(client, request.payload);
     return h.response({
       data: await clientRepository.save(client)
@@ -89,7 +89,7 @@ export const deleteUser: ServerRouteConfig = {
   },
   async handler(request, h) {
     return h.response({
-      data: h.context.clientRepository.remove(request.params.clientId)
+      data: h.context.clientRepository.remove(request.params.userId)
     });
   }
 };

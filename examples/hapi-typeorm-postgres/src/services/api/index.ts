@@ -1,6 +1,6 @@
 import { getConnection } from 'typeorm';
-import { User } from '../../entity/User';
-import { Client } from '../../entity/Client';
+import { User } from '../../db/entity/User';
+import { Client } from '../../db/entity/Client';
 import users from './users';
 import clients from './clients';
 

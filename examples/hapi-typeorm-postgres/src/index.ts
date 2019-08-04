@@ -14,14 +14,6 @@ const startServer = async (): void => {
 
   const server = new Server({ port: process.env.SERVER_PORT, app: { dbConn } });
 
-  // let server = new Hapi.server({
-  //   routes: {
-  //     plugins: {
-  //       hapiAuthorization: { roles: ['ADMIN'] }
-  //     }
-  //   }
-  // });
-
   await registerServices(server);
 
   await server.start();

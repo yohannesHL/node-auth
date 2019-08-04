@@ -1,8 +1,12 @@
 'use strict';
-import defaultLogin from './login';
-import Boom from '@hapi/boom';
+import simpleLogin from './login/simple';
+import simpleRegister from './register/register';
+
+// import Boom from '@hapi/boom';
+import getRepo, { RepositoryTypes } from '../../db/repository';
 
 const register = server => {
+  const userRepo = getRepo(RepositoryTypes.USER);
   // server.auth.default()
   // server.register
   server.auth.strategy('session', 'cookie', {
@@ -14,34 +18,42 @@ const register = server => {
     redirectTo: '/login.html',
     validateFunc: async (request, session) => {
       //decode JWT to get user data
-      const account = true; //await users.find(user => user.id === session.id);
-      console.debug('validating Login success', account, request.path, session);
+      const account = true; //
+      const data = await userRepo.find(user => user.id === session.id);
+      console.info('#Got data', data, RepositoryTypes);
+      console.debug(
+        'validating Login... success!',
+        account,
+        request.path,
+        session
+      );
 
       if (!account) {
+        console.debug('validating Login... failed!');
         return { valid: false };
       }
 
-      return { valid: true, credentials: account };
+      return { valid: true, credentials: account && { userName: 'john' } };
     }
   });
 
   // .verify(auth)
-  const scheme = function(server, options) {
-    console.info('registered custom scheme', server, options);
-    return {
-      authenticate: function(request, h) {
-        const req = request.raw.req;
-        const authorization = req.headers.authorization;
-        if (!authorization) {
-          throw Boom.unauthorized(null, 'Custom');
-        }
 
-        return h.authenticated({ credentials: { user: 'john' } });
-      }
-    };
-  };
+  // server.auth.scheme('custom', function customScheme(server, options) {
+  //   console.info('registered custom scheme', server, options);
+  //   return {
+  //     authenticate: function(request, h) {
+  //       const req = request.raw.req;
+  //       const authorization = req.headers.authorization;
+  //       if (!authorization) {
+  //         throw Boom.unauthorized(null, 'Custom');
+  //       }
 
-  server.auth.scheme('custom', scheme); //
+  //       return h.authenticated({ credentials: { user: 'john' } });
+  //     }
+  //   };
+  // });
+  //
   // server.auth.strategy('api-restrict', 'ip-whitelist', [
   //   '209.225.49.0/24',
   //   '216.33.197.0/24',
@@ -86,11 +98,18 @@ const register = server => {
 
   // onPreAuth, Authorization, Authentication, onRequest
 
-  server.route([defaultLogin]);
+  server.route([simpleLogin, simpleRegister]);
 };
 
 export default {
   name: 'auth',
-  register
-  // dependencies: '@hapi/cookie @hapi/bell'
+  register,
+  dependencies: ['@hapi/cookie']
 };
+// let server = new Hapi.server({
+//   routes: {
+//     plugins: {
+//       hapiAuthorization: { roles: ['ADMIN'] }
+//     }
+//   }
+// });

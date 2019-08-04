@@ -1,14 +1,20 @@
 import Path from 'path';
 
 const register = server => {
-  console.info(__dirname);
-  server.path(Path.join(__dirname, '../../public'));
+  const staticPath = Path.join(__dirname, '../../public');
+
+  console.info('Setting up static routes...', __dirname, staticPath);
+  server.path(staticPath);
   server.route({
     method: 'GET',
     path: '/{static*}',
+    options: {
+      tags: ['static', 'user'],
+      auth: false
+    },
     handler: {
       directory: {
-        path: Path.join(__dirname, '../../public'),
+        path: staticPath,
         redirectToSlash: true,
         listing: true,
         index: true
