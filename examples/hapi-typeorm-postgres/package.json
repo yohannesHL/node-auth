@@ -8,7 +8,7 @@
   "typings": "./types/index.d.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --inspect --debug --transpileOnly -r esm -r dotenv/config ./src/index.ts",
-    "seed": "ts-node-dev ./scripts/seed.ts",
+    "seed": "ts-node-dev ./src/db/seed/index.ts",
     "start": "build && node ./build/server.js",
     "built": "node -r esm main.js",
     "build": "tsc .",

@@ -19,10 +19,10 @@ export default async function registerServices(server: Server) {
       // auth: { mode: 'required' }
     });
 
-    // await server.register([WebApp], {
-    //   routes: { prefix: '/app' }
-    //   // auth: { mode: 'required' }
-    // });
+    await server.register([WebApp], {
+      routes: { prefix: '/app' }
+      // auth: { mode: 'required' }
+    });
 
     await server.register([Static]);
 

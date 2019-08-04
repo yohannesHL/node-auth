@@ -18,7 +18,7 @@ class Client {
   stage: string;
 
   @Column()
-  meta: string;
+  meta: object;
 
   @Column()
   email: string;

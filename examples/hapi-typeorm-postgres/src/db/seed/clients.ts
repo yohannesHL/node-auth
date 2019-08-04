@@ -1,9 +1,9 @@
 import { Client } from '../entity';
 import { Connection } from 'typeorm';
+import { clients as clientsData } from './clients_data.json';
 
 export default async function createClients(db: Connection) {
   const clientRepository = db.getRepository(Client);
-  const clientsData = [];
 
   let createdData;
   for (let data of clientsData) {

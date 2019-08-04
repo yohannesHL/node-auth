@@ -1,17 +1,9 @@
-import { User } from '../entity/User';
+import { User } from '../entity';
 import { Connection } from 'typeorm';
+import { users as usersData } from './users_data.json';
 
 export default async function createUsers(db: Connection) {
   const userRepository = db.getRepository(User);
-  const usersData = [
-    {
-      firstName: 'John',
-      lastName: 'Smith',
-      email: 'john@email.com',
-      userName: 'john',
-      password: '$2b$10$Xo2kWRVD2tpTfml8r73J7unNIeQcQxlbOSi2vPaIEMgUNsEmpT47K'//password
-    }
-  ];
 
   let createdUser = null;
   for (let data of usersData) {
