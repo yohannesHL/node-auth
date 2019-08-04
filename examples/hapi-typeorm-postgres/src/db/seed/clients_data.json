@@ -6,10 +6,7 @@
 			"companyId": "MSFT001",
 			"description": "john@email.com",
 			"stage": "john",
-            "meta": {
-                "industry": "fintech", 
-                "tag": "abc, cdf"
-            },
+            "meta": "{\"industry\": \"fintech\", \"tag\": \"abc, cdf\"}",
             "telephone": "02076371982",
             "address": "02076371982",
             "website": "02076371982"
