@@ -5,10 +5,10 @@ import Vision from '@hapi/vision';
 import Bell from '@hapi/bell';
 import Auth from './auth';
 import Api from './api';
-import WebApp from './webapp';
 import Static from './static';
 import Docs from './docs';
 import setupMiddleware from './middleware';
+import setupServerMethods from '../methods';
 
 export default async function registerServices(server: Server) {
   try {
@@ -19,14 +19,10 @@ export default async function registerServices(server: Server) {
       // auth: { mode: 'required' }
     });
 
-    await server.register([WebApp], {
-      routes: { prefix: '/app' }
-      // auth: { mode: 'required' }
-    });
-
     await server.register([Static]);
 
     setupMiddleware(server);
+    setupServerMethods(server);
   } catch (err) {
     console.error('Error creating services', err);
   }
