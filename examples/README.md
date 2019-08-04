@@ -7,7 +7,7 @@
 > * Run `docker-compose up` to start `postgres` 
 > * Leave `postgres` running in terminal
 
-## Start server
+## Start Server
 
 > * Run `yarn dev` or `npm run dev` to start development server
 > * Run `yarn start` or `npm start` to start production server
