@@ -15,7 +15,7 @@ class Journal {
   content: string;
 
   @Column()
-  meta: object;
+  meta: string;
 }
 export { Journal };
 export default Journal;
