@@ -166,6 +166,18 @@
   dependencies:
     "@hapi/hoek" "6.x.x"
 
+"@hapi/bell@^10.1.0":
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/@hapi/bell/-/bell-10.1.0.tgz#380a38d3e94bc5a09697c979d492b43f9c6f4bd9"
+  integrity sha512-yppUKF33G3aRSoJ+B1iw887lFgIIoWw9QAdmLoapLwcFF1SwFmbWk6Z9q/zRX+qTifFbSVtl4BCqpIu/E1zVnA==
+  dependencies:
+    "@hapi/boom" "7.x.x"
+    "@hapi/bounce" "1.x.x"
+    "@hapi/cryptiles" "4.x.x"
+    "@hapi/hoek" "6.x.x"
+    "@hapi/joi" "15.x.x"
+    "@hapi/wreck" "15.x.x"
+
 "@hapi/boom@7.x.x", "@hapi/boom@^7.1.1", "@hapi/boom@^7.4.2":
   version "7.4.2"
   resolved "https://registry.yarnpkg.com/@hapi/boom/-/boom-7.4.2.tgz#c16957cd09796f6c1bfb4031bdc39d66d6d750c3"
