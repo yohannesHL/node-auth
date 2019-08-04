@@ -4,11 +4,9 @@
           "es5",
           "es6"
        ],
-       "target": "es6",
-       "module": "amd",
+       "target": "ES2018",
        "moduleResolution": "node",
        "outDir": "./build",
-       "outFile": "./build/server.js",                      
        "sourceMap": true,
        "emitDecoratorMetadata": true,
        "experimentalDecorators": true,
