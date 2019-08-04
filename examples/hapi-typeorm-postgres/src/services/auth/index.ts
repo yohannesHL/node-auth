@@ -24,6 +24,7 @@ const register = server => {
       return { valid: true, credentials: account };
     }
   });
+
   // .verify(auth)
   const scheme = function(server, options) {
     console.info('registered custom scheme', server, options);
@@ -41,22 +42,22 @@ const register = server => {
   };
 
   server.auth.scheme('custom', scheme); //
-  server.auth.strategy('api-restrict', 'ip-whitelist', [
-    '209.225.49.0/24',
-    '216.33.197.0/24',
-    '216.33.196.0/24',
-    '63.128.82.0/24',
-    '63.128.83.0/24',
-    '63.128.94.0/24'
-  ]); // route.  options: { auth: 'localhost' }
+  // server.auth.strategy('api-restrict', 'ip-whitelist', [
+  //   '209.225.49.0/24',
+  //   '216.33.197.0/24',
+  //   '216.33.196.0/24',
+  //   '63.128.82.0/24',
+  //   '63.128.83.0/24',
+  //   '63.128.94.0/24'
+  // ]); // route.  options: { auth: 'localhost' }
 
-  server.auth.strategy('github', 'bell', {
-    provider: 'github',
-    password: 'cookie_encryption_password_secure',
-    clientId: 'my_github_client_id',
-    clientSecret: 'my_github_client_secret',
-    isSecure: false // not using HTTPS
-  });
+  // server.auth.strategy('github', 'bell', {
+  //   provider: 'github',
+  //   password: 'cookie_encryption_password_secure',
+  //   clientId: 'my_github_client_id',
+  //   clientSecret: 'my_github_client_secret',
+  //   isSecure: false // not using HTTPS
+  // });
 
   server.auth.default('session');
 
@@ -90,6 +91,6 @@ const register = server => {
 
 export default {
   name: 'auth',
-  register,
-  dependencies: '@hapi/cookie @hapi/bell'
+  register
+  // dependencies: '@hapi/cookie @hapi/bell'
 };

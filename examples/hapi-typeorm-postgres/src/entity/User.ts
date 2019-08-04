@@ -20,5 +20,5 @@ class User {
   @Column()
   password: string;
 }
-
+export { User };
 export default User;

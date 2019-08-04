@@ -32,5 +32,5 @@ class Client {
   @Column()
   website: string;
 }
-
+export { Client };
 export default Client;

@@ -11,19 +11,23 @@ import Docs from './docs';
 import setupMiddleware from './middleware';
 
 export default async function registerServices(server: Server) {
-  await server.register(Cookie, Inert, Vision, Bell, Auth);
+  try {
+    await server.register([Cookie, Inert, Vision, Bell, Auth]);
 
-  await server.register([Api, Docs], {
-    routes: { prefix: '/api' },
-    auth: { mode: 'required' }
-  });
+    await server.register([Api, Docs], {
+      routes: { prefix: '/api' }
+      // auth: { mode: 'required' }
+    });
 
-  await server.register([WebApp], {
-    routes: { prefix: '/app' },
-    auth: { mode: 'required' }
-  });
+    // await server.register([WebApp], {
+    //   routes: { prefix: '/app' }
+    //   // auth: { mode: 'required' }
+    // });
 
-  await server.register([Static]);
+    await server.register([Static]);
 
-  setupMiddleware(server);
+    setupMiddleware(server);
+  } catch (err) {
+    console.error('Error creating services', err);
+  }
 }

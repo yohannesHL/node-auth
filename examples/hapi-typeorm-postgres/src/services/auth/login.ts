@@ -1,6 +1,6 @@
 'use strict';
 import { ServerRouteConfig } from '../types';
-import { userRepository } from '../../repository';
+import getRepository, { RepositoryTypes } from '../../repository';
 import Bcrypt from 'bcrypt';
 
 const login: ServerRouteConfig = {
@@ -12,7 +12,9 @@ const login: ServerRouteConfig = {
   async handler(request, h) {
     console.debug('Logining in user', request.cookieAuth.id, request.payload);
     const { username, password } = request.payload;
-    const account = await userRepository.find({ username: username });
+    const account = await getRepository(RepositoryTypes.USER).find({
+      username: username
+    });
 
     console.info(password, account.password, password === account.password);
     if (!account || !(await Bcrypt.compare(password, account.password))) {

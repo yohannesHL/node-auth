@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import { Server } from '@hapi/hapi';
-import registerServices from './services/index';
+import registerServices from './services';
 
 const startServer = async (): void => {
   let dbConn;
