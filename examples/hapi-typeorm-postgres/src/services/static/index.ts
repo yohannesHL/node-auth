@@ -1,9 +1,11 @@
 import Path from 'path';
+import { logger } from '../../shared/logger';
 
 const register = server => {
   const staticPath = Path.join(__dirname, '../../public');
 
-  console.info('Setting up static routes...', __dirname, staticPath);
+  logger.info('Setting up static routes...', staticPath);
+
   server.path(staticPath);
   server.route({
     method: 'GET',

@@ -1,14 +1,5 @@
 import { Request, ResponseToolkit, Server } from 'hapi';
 
-// // server.decorate('toolkit', 'success', success);
-// //console.log(server.decorations.toolkit);            // ['success']
-// const success = function () {
-
-//   return this.response({ status: 'ok' });
-// };
-
-// server.decorate('toolkit', 'success', success);
-// console.log(server.decorations.toolkit);
 export default function setupApiResponseMiddleware(server: Server) {
   server.ext('onPreResponse', (request: Request, h: ResponseToolkit) => {
     const response = request.response;
