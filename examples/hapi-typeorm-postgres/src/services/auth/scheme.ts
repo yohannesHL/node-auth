@@ -1,5 +1,5 @@
 'use strict';
-import defaultLogin from './login';
+import defaultLogin from './simple/login';
 
 const register = server => {
   // server.auth.default()

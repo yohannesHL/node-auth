@@ -16,7 +16,6 @@
        "rootDirs": ["./"],
        "pretty": true,
        "diagnostics": true,
-       "strict": true,                           
        "alwaysStrict": true,
        "noImplicitAny": true,                
        "preserveConstEnums": true
