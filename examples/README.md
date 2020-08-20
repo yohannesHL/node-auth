@@ -12,5 +12,5 @@
 
 ## Start Server
 
-> * Run `yarn dev` to start development server
-> * Run `yarn start`to start production server
+> * To start development server run: `yarn dev` or `npm run dev`
+> * To start production server run: `yarn start` or `npm start`
