@@ -7,15 +7,15 @@ Provides some simple examples that can be used as a starting point when building
 > Disclamer: These examples are **not** production ready and should not be used without modification.
 
 1. Hapi.js TypeORM Postgres Swagger: 
-    * Password Login with Session cookie
-    * Github login 
+    - [x] Password Login with Session cookie
+    - [ ] Github login 
     > `$ cd examples/hapi-typeorm-postgres`
     >
     > `$ yarn install & yarn dev`
 
 1. Express.js TypeORM and Passport.js:
-    * Password login with session cookie
-    * Github login
+    - [x] Password login with session cookie
+    - [ ] Github login
     > `$ cd examples/express-typeorm-postgres`
     >
     > `$ yarn install & yarn dev`
