@@ -25,7 +25,7 @@ const register = server => {
       auth: false
     },
     handler: {
-      file:'register.html'
+      file: 'register.html'
     }
   });
 
@@ -34,7 +34,7 @@ const register = server => {
     path: '/{static*}',
     options: {
       tags: ['static'],
-      auth: 'session'
+      auth: 'local-password'
     },
     handler: {
       directory: {

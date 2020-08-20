@@ -14,7 +14,7 @@ export default async function registerServices(server: Server) {
   try {
     await server.register([Cookie, Inert, Vision, Bell, Auth]);
     
-    server.auth.default('password-cookie');
+    server.auth.default('local-password');
 
     await server.register([Api, Docs], {
       routes: { prefix: '/api' }

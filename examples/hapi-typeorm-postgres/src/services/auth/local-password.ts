@@ -1,7 +1,6 @@
 import { In } from 'typeorm';
 import { ServerRouteConfig } from '../../types';
 import User from '../../db/entity/User';
-import getRepository, { RepositoryTypes } from '../../db/repository/index';
 import { logger } from '../../shared/logger';
 
 const ServerErrorKeys = {
@@ -27,8 +26,7 @@ const loginUser: ServerRouteConfig = {
     }
 
     let passwordMatch = false;
-    const repo = await getRepository(RepositoryTypes.USER);
-    const account = <User>await repo.findOne({
+    const account = await User.findOne({
       userName: userName
     });
 
@@ -74,9 +72,8 @@ const registerUser: ServerRouteConfig = {
     if (!userName || !password) {
       return h.redirect(`/register.html?error=MissingInfo`);
     }
-    const repo = await getRepository(RepositoryTypes.USER);
 
-    const account = await repo.findOne({
+    const account = await User.findOne({
       userName
     });
 
@@ -85,23 +82,22 @@ const registerUser: ServerRouteConfig = {
     }
 
     const hashedPassword = await request.server.methods.hashPassword(password);
-    const record = repo.create({
+    const record = User.create({
       firstName: 'John',
       lastName: 'Smith',
       email: 'john@email.com',
       userName: userName,
       password: hashedPassword
     });
-    repo.save(record);
+    User.save(record);
 
     return h.redirect(`/login.html`);
   }
 };
 
 const register = async server => {
-  const userRepo = await getRepository(RepositoryTypes.USER);
 
-  server.auth.strategy('password-cookie', 'cookie', {
+  server.auth.strategy('local-password', 'cookie', {
     cookie: {
       name: 'sid-example',
       password: process.env.SESSION_SECRET,
@@ -114,7 +110,7 @@ const register = async server => {
       const sessionIds = sessions.id
         ? [sessions.id]
         : (sessions || []).map(x => x.id);
-      const account = await userRepo.findOne({
+      const account = await User.findOne({
         id: In(sessionIds)
       });
 
@@ -133,7 +129,7 @@ const register = async server => {
 };
 
 export default {
-  name: 'password-cookie',
+  name: 'local-password',
   register,
   dependencies: ['@hapi/cookie']
 };

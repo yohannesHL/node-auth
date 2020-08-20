@@ -1,19 +1,20 @@
-import { ServerRouteConfig } from '../../types/index';
+import { ServerRouteConfig } from '../../../types/index';
 import { SchemaTypes } from '../../../shared/crud';
 import { getParamSchema, getQuerySchema, getPayloadSchema } from './schema';
+import User from '../../../db/entity/User';
 
 export const getUsers: ServerRouteConfig = {
   method: 'GET',
   path: '/users',
   options: {
     tags: ['api', 'user'],
-    auth: 'session',
+    auth: 'local-password',
     validate: {
       query: getQuerySchema(SchemaTypes.RETRIEVE)
     },
     async handler(request, h) {
       return h.response({
-        data: await h.context.userRepository.find()
+        data: await User.find()
       });
     }
   }
@@ -24,14 +25,14 @@ export const getUser: ServerRouteConfig = {
   path: '/users/{userId}',
   options: {
     tags: ['api'],
-    auth: 'session',
+    auth: 'local-password',
     validate: {
       params: getParamSchema(SchemaTypes.RETRIEVE),
       query: getQuerySchema(SchemaTypes.RETRIEVE)
     },
     async handler(request, h) {
       return h.response({
-        data: await h.context.clientRepository.findOne(request.params.userId)
+        data: await User.findOne(request.params.userId)
       });
     }
   }
@@ -42,7 +43,7 @@ export const createUser: ServerRouteConfig = {
   path: '/users',
   options: {
     tags: ['api'],
-    auth: 'session',
+    auth: 'local-password',
     validate: {
       payload: getPayloadSchema(SchemaTypes.CREATE),
       query: getQuerySchema(SchemaTypes.CREATE)
@@ -50,7 +51,7 @@ export const createUser: ServerRouteConfig = {
   },
   async handler(request, h) {
     return h.response({
-      data: await h.context.clientRepository.create(request.payload)
+      data: await User.create(request.payload)
     });
   }
 };
@@ -60,7 +61,7 @@ export const updateUser: ServerRouteConfig = {
   path: '/users/{userId}',
   options: {
     tags: ['api'],
-    auth: 'session',
+    auth: 'local-password',
     validate: {
       params: getParamSchema(SchemaTypes.UPDATE),
       payload: getPayloadSchema(SchemaTypes.UPDATE)
@@ -81,7 +82,7 @@ export const deleteUser: ServerRouteConfig = {
   path: '/users/{userId}',
   config: {
     tags: ['api'],
-    auth: 'session',
+    auth: 'local-password',
     validate: {
       params: getParamSchema(SchemaTypes.DELETE),
       payload: getPayloadSchema(SchemaTypes.DELETE)
@@ -89,7 +90,7 @@ export const deleteUser: ServerRouteConfig = {
   },
   async handler(request, h) {
     return h.response({
-      data: h.context.clientRepository.remove(request.params.userId)
+      data: User.remove(request.params.userId)
     });
   }
 };

@@ -1,4 +1,4 @@
-import passwordCookie from './passwordCookie';
+import passwordCookie from './local-password';
 
 
 
