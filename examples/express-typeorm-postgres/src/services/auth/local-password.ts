@@ -1,10 +1,8 @@
 import { Router, Request, Response } from 'express';
-import { In } from 'typeorm';
-import { User, Session } from '../../db/entity';
-import getRepository, { RepositoryTypes } from '../../db/repository/index';
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import Bcrypt from 'bcrypt';
+import { User, Session } from '../../db/entity';
 
 const PASSWORD_SALT_ROUNDS = 10;
 
@@ -33,9 +31,9 @@ passport.use(
   })
 );
 
-const PasswordAuthRouter = Router();
+const LocalAuthRouter = Router();
 
-PasswordAuthRouter.get('/login', async function listAllUsers(
+LocalAuthRouter.post('/', async function listAllUsers(
   request: Request,
   response: Response
 ) {
@@ -48,7 +46,7 @@ PasswordAuthRouter.get('/login', async function listAllUsers(
   );
 });
 
-PasswordAuthRouter.get('/register', async function getUser(
+LocalAuthRouter.post('/register', async function getUser(
   request: Request,
   response: Response
 ) {
@@ -57,7 +55,6 @@ PasswordAuthRouter.get('/register', async function getUser(
   if (!userName || !password) {
     return response.redirect(`/register.html?error=MissingInfo`);
   }
-  const repo = await getRepository(RepositoryTypes.USER);
 
   const account = await User.findOne({
     userName,
@@ -75,16 +72,16 @@ PasswordAuthRouter.get('/register', async function getUser(
     userName: userName,
     password: hashedPassword,
   });
-  repo.save(record);
+  User.save(record);
 
   return response.redirect(`/login.html`);
 });
 
-PasswordAuthRouter.post('/logout', async function create(
+LocalAuthRouter.post('/logout', async function create(
   request: Request,
   response: Response
 ) {
   // TODO:
 });
 
-export default PasswordAuthRouter;
+export default LocalAuthRouter;
