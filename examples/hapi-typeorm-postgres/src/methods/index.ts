@@ -12,6 +12,8 @@ export async function comparePassword(password, hashedPassword) {
   return await Bcrypt.compare(password, hashedPassword);
 }
 
+// TODO: move to simple strat
+
 async function setupServerMethods(server) {
   server.method('hashPassword', hashPassword);
   server.method('comparePassword', comparePassword);

@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+       "lib": [
+          "es5",
+          "es6"
+       ],
+       "target": "ES2018",
+       "moduleResolution": "node",
+       "outDir": "./build",
+       "sourceMap": true,
+       "emitDecoratorMetadata": true,
+       "experimentalDecorators": true,
+       "resolveJsonModule": true,
+       "esModuleInterop": true,
+       "baseUrl": "./",
+       "rootDirs": ["./"],
+       "pretty": true,
+       "diagnostics": true,
+       "alwaysStrict": true,
+       "noImplicitAny": true,                
+       "preserveConstEnums": true
+    },
+    "include": ["./src"],
+    "exclude": ["./node_modules"]
+ }

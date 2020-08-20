@@ -1,10 +1,7 @@
-import 'reflect-metadata';
 import { createConnection } from 'typeorm';
-import createUsers from './users';
+import 'reflect-metadata';
 
 export default async function seedDB() {
   const db = await createConnection();
   db.synchronize();
-
-  await createUsers(db);
 }
