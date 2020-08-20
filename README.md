@@ -47,7 +47,7 @@ At the very least one must ensure that :
 
 
 ## Identity and Access Management (IAM) service providers
-There is an immediate advantage to this approach: you get managed identity service, improved security and additional features which you would have had to build. It give your business a competitive advantage by freeing up developers so that they can concentrate on core features. All IAM service providers provide a variety of authentication methods including SSO and MFA. Most provide additional benifits such as built in session tracking/management, granualar access control, and interopability with other identity providers (IdPs). 
+There is an immediate advantage to this approach: you get managed identity service, improved security and additional features which you would have had to build. It gives your business a competitive advantage by freeing up developers to work on core product features. All IAM service providers offer a variety of authentication methods including SSO and MFA. Most provide additional benifits such as built in session tracking/management, granualar access control, and interopability with other identity providers (IdPs). 
 
 Common providers include:
 - [Auth0](https://auth0.com/user-management/)
@@ -87,6 +87,7 @@ Yohannes Libanos
 ### References:
 - https://searchsecurity.techtarget.com/definition/identity-access-management-IAM-system
 - https://www.onelogin.com/learn/how-single-sign-on-works
+- https://en.wikipedia.org/wiki/Identity_management
 
 
     
