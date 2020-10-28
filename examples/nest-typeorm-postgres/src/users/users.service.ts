@@ -17,6 +17,10 @@ export class UsersService {
     return User.findOne(id);
   }
 
+  findOneByUserName(userName: string) {
+    return User.findOne({ userName });
+  }
+
   update(id: number, updateUserDto: UpdateUserDto) {
     return User.update(id, updateUserDto);
   }
