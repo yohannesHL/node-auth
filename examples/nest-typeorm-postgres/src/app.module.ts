@@ -15,7 +15,8 @@ import { UsersModule } from './users/users.module';
       username: config.TYPEORM_USERNAME,
       password: config.TYPEORM_PASSWORD,
       database: config.TYPEORM_DATABASE,
-      autoLoadEntities: true
+      autoLoadEntities: true,
+      synchronize:true
     }),
     UsersModule,
     AuthModule,
