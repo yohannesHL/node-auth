@@ -20,6 +20,13 @@ Provides some simple examples that can be used as a starting point when building
     >
     > `$ yarn install & yarn dev`
 
+1. Nest.js TypeORM and Passport.js:
+    - [] Password login with session cookie
+    - [ ] Github login
+    > `$ cd examples/nest-typeorm-postgres`
+    >
+    > `$ yarn install & yarn dev`
+
 ## Overview
 
 Authentication is an important and often required part of a web product/service. When comming up with a authentication solution its critical to adopt [best security practices](#best-practices). UX considerations should also form an important part of the solution design. Password based logins are not the only (or ideal) approachs: Single Sign On (SSO) and passwordless logins could also be used. There are also decentralised solutions suchas DIDs and self sovern Idenity(SSI).
