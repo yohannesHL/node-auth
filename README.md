@@ -21,10 +21,9 @@ Provides some simple examples that can be used as a starting point when building
     > `$ yarn install & yarn dev`
 
 1. Nest.js TypeORM and Passport.js:
-    - [] Password login with session cookie
+    - [ ] Password login with session cookie
     - [ ] Github login
     > `$ cd examples/nest-typeorm-postgres`
-    >
     > `$ yarn install & yarn dev`
 
 ## Overview
