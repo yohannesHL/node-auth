@@ -25,7 +25,7 @@
     "passport": "^0.4.1",
     "passport-github": "^1.1.0",
     "passport-local": "^1.0.0",
-    "sqlite3": "^5.0.0",
+    "sqlite3": "^5.0.3",
     "typeorm": "^0.2.25"
   },
   "devDependencies": {
